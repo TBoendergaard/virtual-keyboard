@@ -1,11 +1,11 @@
-import Element from './Element';
+import CreateElement from './CreateElement';
 
-export default class TextOutput {
+export default class CreateTextOutput {
   value = '';
 
   constructor(app) {
     this.app = app;
-    const textarea = new Element(document.querySelector('.wrapper'), { class: 'output', tag: 'textarea' });
+    const textarea = new CreateElement(document.querySelector('.wrapper'), { class: 'output', tag: 'textarea' });
     this.el = textarea.node;
     // this.el.onkeydown = (e) => { console.log('onkey ', e.code); };
   }

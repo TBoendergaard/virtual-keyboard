@@ -1,16 +1,16 @@
-import Info from './Info';
-import Keyboard from './Keyboard';
-import TextOutput from './TextOutput';
-import Title from './Title';
-import Wrapper from './Wrapper';
+import CreateInfo from './CreateInfo';
+import CreateKeyboard from './CreateKeyboard';
+import CreateTextOutput from './CreateTextOutput';
+import CreateTitle from './CreateTitle';
+import CreateWrapper from './CreateWrapper';
 
 export default class App {
   constructor() {
-    const wrapper = new Wrapper();
-    const title = new Title('Virtual keyboard');
-    this.output = new TextOutput();
-    const keyboard = new Keyboard(this, localStorage.getItem('lang') || 'ru');
-    const info = new Info();
+    const wrapper = new CreateWrapper();
+    const title = new CreateTitle('Virtual keyboard');
+    this.output = new CreateTextOutput();
+    const keyboard = new CreateKeyboard(this, localStorage.getItem('lang') || 'ru');
+    const info = new CreateInfo();
 
     document.body.addEventListener('keydown', (e) => {
       e.preventDefault();

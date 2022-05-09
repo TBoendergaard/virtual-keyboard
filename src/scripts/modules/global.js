@@ -1,4 +1,4 @@
-export const keysLayout = [
+export const KEYS_LAYOUT = [
   ['Tilda', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '+', 'Backspace'],
   ['Tab', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', 'BackSlash', 'Del'],
   ['CapsLock', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'Semicolon', 'Quote', 'Enter'],
@@ -6,7 +6,7 @@ export const keysLayout = [
   ['Ctrl', 'Win', 'Alt', 'Space', 'AltRight', 'ArrowLeft', 'ArrowDown', 'ArrowRight', 'CtrlRight'],
 ];
 
-export const keys = {
+export const KEYS = {
   Tilda: {
     en: '`', enUp: '~', ru: 'ё', ruUp: 'Ё', code: 'Backquote',
   },
@@ -182,7 +182,7 @@ export const keys = {
   },
 };
 
-export const keysParams = {
+export const KEYS_PARAMS = {
   Space: { style: 'keyboard__key--space' },
   ArrowUp: { style: 'keyboard__key--functional' },
   ArrowLeft: { style: 'keyboard__key--functional' },

@@ -1,6 +1,6 @@
-import Element from './Element';
+import CreateElement from './CreateElement';
 
-export default class Key extends Element {
+export default class CreateKey extends CreateElement {
   active = false;
 
   led = false;

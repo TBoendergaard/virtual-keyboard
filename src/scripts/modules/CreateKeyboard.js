@@ -1,8 +1,8 @@
-import { keysLayout, keys, keysParams } from './global';
-import Element from './Element';
-import Key from './Key';
+import { KEYS_LAYOUT, KEYS, KEYS_PARAMS } from './global';
+import CreateElement from './CreateElement';
+import CreateKey from './CreateKey';
 
-export default class Keyboard {
+export default class CreateKeyboard {
   buttons = {};
 
   holded = {
@@ -17,23 +17,23 @@ export default class Keyboard {
   constructor(app, lang) {
     this.app = app;
     this.lang = lang;
-    const layout = new Element(document.querySelector('.wrapper'), { class: 'keyboard' });
+    const layout = new CreateElement(document.querySelector('.wrapper'), { class: 'keyboard' });
 
-    keysLayout.forEach((row) => {
-      const line = new Element(layout.node, { class: 'keyboard__row' });
+    KEYS_LAYOUT.forEach((row) => {
+      const line = new CreateElement(layout.node, { class: 'keyboard__row' });
 
       row.forEach((key) => {
         const buttonkeysParams = {
-          values: keys[key],
-          styles: (keysParams[key]) ? keysParams[key].style : null,
-          type: (keysParams[key]) ? keysParams[key].type : null,
+          values: KEYS[key],
+          styles: (KEYS_PARAMS[key]) ? KEYS_PARAMS[key].style : null,
+          type: (KEYS_PARAMS[key]) ? KEYS_PARAMS[key].type : null,
           callback: () => {
-            this.keyClick(keys[key].code);
+            this.keyClick(KEYS[key].code);
           },
         };
 
-        const button = new Key(line.node, { class: 'keyboard__key' }, buttonkeysParams, lang);
-        const { code } = keys[key];
+        const button = new CreateKey(line.node, { class: 'keyboard__key' }, buttonkeysParams, lang);
+        const { code } = KEYS[key];
         this.buttons[code] = button;
       });
     });
