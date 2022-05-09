@@ -25,6 +25,9 @@
     transition: all .05s linear;
     border-radius: 3px;
     border: 1px solid rgb(78, 78, 78);
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    user-select: none;  
 
     &--space {
       min-width: 315px;
