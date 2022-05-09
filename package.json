@@ -29,6 +29,7 @@
     "webpack-dev-server": "^4.8.1"
   },
   "dependencies": {
-    "normalize.css": "^8.0.1"
+    "normalize.css": "^8.0.1",
+    "reset-css": "^5.0.1"
   }
 }
