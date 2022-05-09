@@ -5,7 +5,7 @@ import Key from './Key';
 export default class Keyboard {
   buttons = {};
 
-  holdable = {
+  holded = {
     Shift: false,
     CapsLock: false,
   };
@@ -79,13 +79,15 @@ export default class Keyboard {
       let state;
       if (callFrom === 'keyDown') state = true;
       if (callFrom === 'keyUp') state = false;
-      if (callFrom === 'keyClick') state = !this.holdable[name];
+      if (callFrom === 'keyClick') state = !this.holded[name];
 
       this.handleHoldableKey(code, state);
     }
 
-    if (this.holdable[this.langSwitchKeys[0]] && this.holdable[this.langSwitchKeys[1]]) {
+    if (this.holded[this.langSwitchKeys[0]] && this.holded[this.langSwitchKeys[1]]) {
       this.switchLang();
+      this.handleHoldableKey(this.langSwitchKeys[0], false);
+      this.handleHoldableKey(this.langSwitchKeys[1], false);
     }
 
     if (callFrom === 'keyUp') this.switchLang.alreadySwitched = false;
@@ -93,10 +95,10 @@ export default class Keyboard {
 
   handleHoldableKey(code, state) {
     const keyName = code.replace('Left', '').replace('Right', '');
-    if (this.holdable[keyName] === state) return;
-    this.holdable[keyName] = state;
+    if (this.holded[keyName] === state) return;
+    this.holded[keyName] = state;
 
-    const buttonCode = `${keyName}Left`; // do the same for right bttns?
+    const buttonCode = `${keyName}Left`;
     this.buttons[buttonCode].led = state;
     this.buttons[buttonCode].lightLed();
 
@@ -104,8 +106,8 @@ export default class Keyboard {
   }
 
   handleCapsLock() {
-    this.holdable.CapsLock = !this.holdable.CapsLock;
-    this.buttons.CapsLock.led = this.holdable.CapsLock;
+    this.holded.CapsLock = !this.holded.CapsLock;
+    this.buttons.CapsLock.led = this.holded.CapsLock;
     this.buttons.CapsLock.lightLed();
 
     this.redrawLayout();
@@ -119,7 +121,7 @@ export default class Keyboard {
   }
 
   redrawLayout() {
-    const upperCase = { CapsLock: this.holdable.CapsLock, Shift: this.holdable.Shift };
+    const upperCase = { CapsLock: this.holded.CapsLock, Shift: this.holded.Shift };
     Object.values(this.buttons).forEach((button) => {
       button.redrawCaption(this.lang, upperCase);
     });
