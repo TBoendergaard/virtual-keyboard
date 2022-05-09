@@ -1,0 +1,53 @@
+.keyboard { 
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 13px;
+  margin-top: 30px;
+  align-items: center;
+  justify-content: center;
+
+  &__row {
+    display: flex;
+    column-gap: 13px;
+  }
+
+  &__key {
+    min-width: 40px;
+    min-height: 40px;
+    background: #BBB;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0px 3px 21px -4px rgb(0, 0, 0);
+    transition: all .05s linear;
+    border-radius: 3px;
+    border: 1px solid rgb(78, 78, 78);
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    user-select: none;  
+
+    &--space {
+      min-width: 315px;
+    }
+
+    &--active {
+      box-shadow: 0px 0px 0px 0px rgb(0, 0, 0);
+      border-color: #F00 !important;
+    }
+
+    &--led {
+      box-shadow: 0px 0px 0px 0px rgb(0, 0, 0);
+      border-color: rgb(225, 0, 255) !important;
+    }
+  }
+  
+  &__key--functional {
+    background: rgb(78, 78, 78);
+    padding: 0 10px;
+    color: #fff;
+    border: 1px solid rgb(78, 78, 78);
+  }
+  
+}
